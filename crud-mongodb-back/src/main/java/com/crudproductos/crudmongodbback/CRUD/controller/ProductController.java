@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.crudproductos.crudmongodbback.CRUD.dto.ProductDto;
 import com.crudproductos.crudmongodbback.CRUD.entity.Product;
+import com.crudproductos.crudmongodbback.CRUD.global.exceptions.AttributeException;
+import com.crudproductos.crudmongodbback.CRUD.global.exceptions.ResourceNotFoundException;
 import com.crudproductos.crudmongodbback.CRUD.service.ProductService;
 
 @RestController
@@ -29,22 +31,22 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getOne(@PathVariable("id") int id) {
+    public ResponseEntity<Product> getOne(@PathVariable("id") int id) throws ResourceNotFoundException {
         return ResponseEntity.ok(productService.getOne(id));
     }
 
     @PostMapping
-    public ResponseEntity<Product> save(@RequestBody ProductDto dto) {
+    public ResponseEntity<Product> save(@RequestBody ProductDto dto) throws AttributeException {
         return ResponseEntity.ok(productService.save(dto));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Product> update(@PathVariable("id") int id, @RequestBody ProductDto dto) {
+    public ResponseEntity<Product> update(@PathVariable("id") int id, @RequestBody ProductDto dto) throws ResourceNotFoundException, AttributeException {
         return ResponseEntity.ok(productService.update(id, dto));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Product> delete(@PathVariable("id") int id) {
+    public ResponseEntity<Product> delete(@PathVariable("id") int id) throws ResourceNotFoundException {
         return ResponseEntity.ok(productService.delete(id));
     }
 }
