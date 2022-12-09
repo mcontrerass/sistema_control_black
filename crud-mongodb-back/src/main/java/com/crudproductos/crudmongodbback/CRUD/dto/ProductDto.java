@@ -1,7 +1,13 @@
 package com.crudproductos.crudmongodbback.CRUD.dto;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+
 public class ProductDto {
+
+    @NotBlank(message = "El nombre del producto es obligatorio")
     private String nombre;
+    @Min(value = 1, message = "El precio es obligatorio")
     private float precio;
     
     public ProductDto() {
