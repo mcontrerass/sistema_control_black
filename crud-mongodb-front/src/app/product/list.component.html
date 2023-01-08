@@ -12,30 +12,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th>1</th>
-            <td>Prod 1</td>
-            <td>1000</td>
-            <td><button class="btn btn-outline-primary" routerLink="/detail"><i class="far fa-eye"></i> Ver</button></td>
+          <tr *ngFor="let prod of products">
+            <th>{{prod.id}}</th>
+            <td>{{prod.nombre}}</td>
+            <td>{{prod.precio}}</td>
+            <td><button class="btn btn-outline-primary" routerLink="/detail/{{prod.id}}"><i class="far fa-eye"></i> Ver</button></td>
             <td><button class="btn btn-outline-warning" routerLink="/update"><i class="far fa-edit"></i> Modificar</button></td>
             <td><button class="btn btn-outline-danger"><i class="far fa-trash-alt"></i> Eliminar</button></td>
-          </tr>
-          <tr>
-            <th>2</th>
-            <td>Prod 2</td>
-            <td>1000</td>
-            <td><button class="btn btn-outline-primary" routerLink="/detail"><i class="far fa-eye"></i> Ver</button></td>
-            <td><button class="btn btn-outline-warning" routerLink="/update"><i class="far fa-edit"></i> Modificar</button></td>
-            <td><button class="btn btn-outline-danger"><i class="far fa-trash-alt"></i> Eliminar</button></td>
-          </tr>
-          <tr>
-            <th>3</th>
-            <td>Prod 3</td>
-            <td>1000</td>
-            <td><button class="btn btn-outline-primary" routerLink="/detail"><i class="far fa-eye"></i> Ver</button></td>
-            <td><button class="btn btn-outline-warning" routerLink="/update"><i class="far fa-edit"></i> Modificar</button></td>
-            <td><button class="btn btn-outline-danger"><i class="far fa-trash-alt"></i> Eliminar</button></td>
-        </tr>
+          </tr>  
         </tbody>
       </table>
     <div class="mt-3">
