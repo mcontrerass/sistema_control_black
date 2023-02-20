@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
 import { Product } from '../model/product';
+import { MessageService } from '../services/message.service';
 import { ProductService } from '../services/product.service';
 
 @Component({
@@ -15,7 +17,9 @@ export class ListComponent implements OnInit{
 
   constructor(
     private productService: ProductService,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private messageService: MessageService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -60,5 +64,10 @@ export class ListComponent implements OnInit{
         )
       }
     });
+  }
+
+  sendProduct(product: Product): void {
+    this.messageService.sendMessage(product);
+    this.router.navigate(['/update']);
   }
 }
